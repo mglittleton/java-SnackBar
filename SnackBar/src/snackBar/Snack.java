@@ -2,11 +2,22 @@ package snackBar;
 
 public class Snack {
     private static int maxId = 0;
+
     private int id;
     private int quantity;
     private double cost;
     private String name;
     private int vendMachId;
+
+    public Snack(int quantity, String name, double cost, int vendMachId) {
+        maxId++;
+        id = maxId;
+
+        this.quantity = quantity;
+        this.name = name;
+        this.cost = cost;
+        this.vendMachId = vendMachId;
+    }
 
     public int getId() {
         return id;
@@ -44,22 +55,13 @@ public class Snack {
         quantity = quantity + numToAdd;
     }
 
-    public void buyQuantity(int numToBuy) {
+    public double buyQuantity(int numToBuy) {
         quantity = quantity - numToBuy;
+        return numToBuy * cost;
     }
 
     public double giveSubtotal(int numToBuy) {
         double subtotal = numToBuy * cost;
         return subtotal;
-    }
-
-    public Snack(int quantity, String name, double cost, int vendMachId) {
-        maxId++;
-        this.id = maxId;
-
-        this.quantity = quantity;
-        this.name = name;
-        this.cost = cost;
-        this.vendMachId = vendMachId;
     }
 }
